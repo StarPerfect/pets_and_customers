@@ -1,18 +1,17 @@
 class Pet
-  attr_reader :name,
-              :type
+  attr_reader :name, :type #:fed I didnt need to attr_reader this
 
-  def initialize(attributes)
-    @name = attributes[:name]
-    @type = attributes[:type]
+  def initialize(details)
+    @name = details[:name]
+    @type = details[:type]
     @fed = false
-  end
-
-  def feed
-    @fed = true
   end
 
   def fed?
     @fed
+  end
+
+  def feed
+    @fed = true
   end
 end
