@@ -1,5 +1,5 @@
 class Pet
-  attr_reader :name, :type #:fed I didnt need to attr_reader this
+  attr_reader :name, :type
 
   def initialize(details)
     @name = details[:name]

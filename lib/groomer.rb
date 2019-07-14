@@ -15,4 +15,7 @@ class Groomer
       customer.pets.select{|pet| pet.type == type}.count
     end.sum
   end
+
+  def charge
+  end
 end

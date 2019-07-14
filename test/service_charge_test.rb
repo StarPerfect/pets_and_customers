@@ -3,8 +3,9 @@ require 'Minitest/pride'
 require './lib/groomer'
 require './lib/customer'
 require './lib/pet'
+require './lib/service_charge'
 
-class GroomerTest < Minitest::Test
+class ServiceChargeTest < Minitest::Test
   def setup
     @spaz = Pet.new({name: 'Spaz', type: 'Boxer'})
     @sativa =  Pet.new({name: 'Sativa', type: 'Boxer'})
@@ -22,20 +23,17 @@ class GroomerTest < Minitest::Test
     @generic_mom.adopt(@kitty)
     @generic_mom.adopt(@puppy)
     @groomer = Groomer.new('Grace', [@dog_mom, @cat_mom, @generic_mom])
+    @wash_and_dry = ServiceCharge.new({service: 'Wash & Dry', customer: @dog_mom, pet: @spaz, amount: 20})
   end
 
-  def test_groomer_exists
-    assert_instance_of Groomer, @groomer
+  def test_service_charge_exists
+    assert_instance_of ServiceCharge, @wash_and_dry
   end
 
-  def test_groomer_finds_outstanding_balances
-    @cat_mom.charge(50)
-    @generic_mom.charge(150)
-
-    assert_equal [@cat_mom, @generic_mom], @groomer.find_outstanding_balances
-  end
-
-  def test_groomer_can_count_types
-    assert_equal 2, @groomer.how_many('Boxer')
+  def test_attributes
+    assert_equal 'Wash & Dry', @wash_and_dry.service
+    assert_equal @dog_mom, @wash_and_dry.customer
+    assert_equal @spaz, @wash_and_dry.pet
+    assert_equal 20, @wash_and_dry.amount
   end
 end
