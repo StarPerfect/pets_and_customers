@@ -1,4 +1,6 @@
 require './lib/pet'
+require './lib/charge'
+require './lib/service'
 
 class Customer
   attr_reader :name, :id, :pets, :outstanding_balance
@@ -14,7 +16,8 @@ class Customer
     @pets << pet
   end
 
-  def charge(amount)
-    @outstanding_balance += amount
+  def charge(service)
+    require "pry"; binding.pry
+    @outstanding_balance += service.charge
   end
 end

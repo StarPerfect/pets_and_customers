@@ -32,7 +32,8 @@ class CustomerTest < Minitest::Test
   end
 
   def test_add_charges
-    @joel.charge(15)
+    
+    @joel.charge()
     @joel.charge(7)
 
     assert_equal 22, @joel.outstanding_balance
